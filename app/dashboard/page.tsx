@@ -1,4 +1,6 @@
 // app/dashboard/page.tsx
+'use client';
+
 import React from 'react';
 import Table from '../components/Table';
 import { artistSubmissions } from '../../lib/data';
@@ -11,13 +13,18 @@ interface Submission {
   city: string;
   fee: string;
 }
+
 /**
  * ManagerDashboardPage component
  * Displays a dashboard for managers to view artist submissions
  * @returns {JSX.Element} - The ManagerDashboardPage component
  */
 const ManagerDashboardPage = () => {
-  const columns = [
+  const columns: {
+    header: string;
+    accessorKey: keyof Submission;
+    cell?: (row: Submission) => React.ReactNode;
+  }[] = [
     { header: 'Name', accessorKey: 'name' },
     { header: 'Category', accessorKey: 'category' },
     { header: 'City', accessorKey: 'city' },
@@ -26,13 +33,13 @@ const ManagerDashboardPage = () => {
       header: 'Action',
       accessorKey: 'id',
       cell: (row: Submission) => (
-  <button
-    onClick={() => alert(`Viewing submission of ${row.name} (ID: ${row.id})`)}
-    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-  >
-    View
-  </button>
-),
+        <button
+          onClick={() => alert(`Viewing submission of ${row.name} (ID: ${row.id})`)}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          View
+        </button>
+      ),
     },
   ];
 
