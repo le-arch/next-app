@@ -25,14 +25,14 @@ const ManagerDashboardPage = () => {
     {
       header: 'Action',
       accessorKey: 'id',
-      cell: (_row: Submission) => (
-        <button
-{/*           onClick={() => alert(`Viewing submission of ${row.name} (ID: ${row.id})`)} */}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          View
-        </button>
-      ),
+      cell: (row: Submission) => (
+  <button
+    onClick={() => alert(`Viewing submission of ${row.name} (ID: ${row.id})`)}
+    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  >
+    View
+  </button>
+),
     },
   ];
 
