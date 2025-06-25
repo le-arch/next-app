@@ -1,11 +1,11 @@
-// components/TransitionWrapper.tsx
-"use client";
-import { motion } from 'framer-motion';
+'use client';
+import { motion, easeInOut } from 'framer-motion'; // 👈 import easing function
 import React, { ReactNode } from 'react';
 
 interface TransitionWrapperProps {
   children: ReactNode;
 }
+
 /**
  * TransitionWrapper component
  * Wraps pages with transition animations
@@ -15,8 +15,16 @@ interface TransitionWrapperProps {
 const TransitionWrapper: React.FC<TransitionWrapperProps> = ({ children }) => {
   const pageVariants = {
     initial: { opacity: 0, x: -100 },
-    animate: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeInOut" } },
-    exit: { opacity: 0, x: 100, transition: { duration: 0.3, ease: "easeInOut" } },
+    animate: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: easeInOut }, // ✅ use function not string
+    },
+    exit: {
+      opacity: 0,
+      x: 100,
+      transition: { duration: 0.3, ease: easeInOut },
+    },
   };
 
   return (
