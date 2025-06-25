@@ -35,6 +35,7 @@ const formSchema = z.object({
 // Use a type alias instead of an empty interface
 type ArtistFormValues = z.infer<typeof formSchema>;
 
+
 /**
  * ArtistOnboardingForm component
  * Form for artists to onboard
